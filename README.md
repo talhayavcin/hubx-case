@@ -26,7 +26,7 @@ Install dependencies
 Start the project
 
 ```bash
-  npm expo start
+  npx expo start
 ```
 
   
