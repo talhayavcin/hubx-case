@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { store } from './src/store';
+import RootNavigator from './src/navigation/RootNavigator';
+import { useFonts } from 'expo-font';
+
+const queryClient = new QueryClient();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Rubik-Light': require('./assets/fonts/Rubik-Light.ttf'),
+    'Rubik-Medium': require('./assets/fonts/Rubik-Medium.ttf'),
+    'Rubik-Regular': require('./assets/fonts/Rubik-Regular.ttf'),
+    'Rubik-SemiBold': require('./assets/fonts/Rubik-SemiBold.ttf'),
+    'Rubik-Bold': require('./assets/fonts/Rubik-Bold.ttf'),
+    'Rubik-ExtraBold': require('./assets/fonts/Rubik-ExtraBold.ttf'),
+    'Visby-ExtraBold': require('./assets/fonts/VisbyExtrabold.otf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <RootNavigator />
+      </QueryClientProvider>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
