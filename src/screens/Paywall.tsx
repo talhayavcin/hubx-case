@@ -22,6 +22,24 @@ type PlanKey = 'monthly' | 'yearly';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Paywall'>;
 
+const FEATURES = [
+  { 
+    title: 'Unlimited', 
+    desc: 'Plant Identify', 
+    icon: require('../../assets/paywall/scanner.png') 
+  },
+  { 
+    title: 'Faster', 
+    desc: 'Process', 
+    icon: require('../../assets/paywall/speedometer.png') 
+  },
+  { 
+    title: 'Detailed', 
+    desc: 'Care Guides', 
+    icon: require('../../assets/paywall/scanner.png') 
+  },
+];
+
 const PaywallScreen = ({ navigation, route }: Props) => {
   const fromOnboarding = route.params?.fromOnboarding ?? false;
   const [selected, setSelected] = useState<PlanKey>('yearly');
@@ -49,7 +67,7 @@ const PaywallScreen = ({ navigation, route }: Props) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
+      <StatusBar barStyle="light-content" backgroundColor="transparent" />
       
       <ImageBackground
         source={require('../../assets/paywall/header.png')}
@@ -141,24 +159,6 @@ const PaywallScreen = ({ navigation, route }: Props) => {
     </View>
   );
 };
-
-const FEATURES = [
-  { 
-    title: 'Unlimited', 
-    desc: 'Plant Identify', 
-    icon: require('../../assets/paywall/scanner.png') 
-  },
-  { 
-    title: 'Faster', 
-    desc: 'Process', 
-    icon: require('../../assets/paywall/speedometer.png') 
-  },
-  { 
-    title: 'Detailed', 
-    desc: 'Care Guides', 
-    icon: require('../../assets/paywall/scanner.png') 
-  },
-];
 
 const styles = StyleSheet.create({
   container: {

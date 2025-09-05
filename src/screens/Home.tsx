@@ -8,7 +8,6 @@ import {
   FlatList,
   TouchableOpacity,
   StatusBar,
-  Image,
   ActivityIndicator,
   ImageBackground,
 } from 'react-native';
